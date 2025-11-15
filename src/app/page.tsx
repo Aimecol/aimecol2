@@ -1,6 +1,4 @@
 import { EnhancedHeroWithScroll } from '@/components/enhanced-hero'
-import { EnhancedSkills } from '@/components/enhanced-skills'
-import { SkillsSection } from '@/components/skills-section'
 import { TechOrbit } from '@/components/tech-orbit'
 import { InnovationShowcase } from '@/components/innovation-showcase'
 import { TestimonialsSection } from '@/components/ui/testimonials-with-marquee'
@@ -63,6 +61,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <EnhancedHeroWithScroll />
+
       <div className="bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center py-16">
@@ -84,21 +83,21 @@ export default function Home() {
         testimonials={[
           {
             author: {
-              name: "Sarah Johnson",
-              handle: "@sarahdev",
+              name: "Honore frank",
+              handle: "@honorefrank",
               avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
             },
-            text: "Aimecol delivered an exceptional mobile app that exceeded our expectations. The attention to detail and user experience is outstanding.",
-            href: "https://twitter.com/sarahdev"
+            text: "Aimecol is a very talented and reliable developer. His portfolio shows how much effort he puts into his work, and it’s clear he keeps improving his skills every year. I really like how clean and professional his projects look.",
+            href: "https://instagram.com/honorefrank"
           },
           {
             author: {
-              name: "Michael Chen",
-              handle: "@michaeltech",
+              name: "Igiraneza Fabrice",
+              handle: "@igifabrice",
               avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
             },
             text: "Working with Aimecol was a game-changer for our startup. The full-stack solution was delivered on time and within budget.",
-            href: "https://twitter.com/michaeltech"
+            href: "https://instagram.com/igifabrice"
           },
           {
             author: {
@@ -135,8 +134,7 @@ export default function Home() {
           }
         ]}
       />
-      
-      {/* <EnhancedSkills /> */}
+
       <RadialOrbitalTimeline timelineData={timelineData} />
       <InnovationShowcase />
     </div>

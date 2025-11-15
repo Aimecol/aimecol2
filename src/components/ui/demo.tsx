@@ -2,6 +2,7 @@ import { BackgroundPaths } from "@/components/ui/background-paths"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { ContainerScroll } from "@/components/ui/container-scroll-animation"
 import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee"
+import { HeroGeometric } from "@/components/ui/shape-landing-hero"
 import Image from "next/image"
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
 
@@ -168,10 +169,21 @@ export function RadialOrbitalTimelineDemo() {
   return <RadialOrbitalTimeline timelineData={timelineData} />
 }
 
+export function DemoHeroGeometric() {
+  return (
+    <HeroGeometric
+      badge="Kokonut UI"
+      title1="Elevate Your"
+      title2="Digital Vision"
+    />
+  )
+}
+
 export default {
   DemoBackgroundPaths,
   DefaultToggle,
   HeroScrollDemo,
   TestimonialsSectionDemo,
   RadialOrbitalTimelineDemo,
+  DemoHeroGeometric,
 }

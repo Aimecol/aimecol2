@@ -44,9 +44,8 @@ export function EnhancedHero() {
   }
 
   return (
-    <motion.section 
+    <div 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ y, opacity }}
     >
       {/* Background Paths Layer */}
       <div className="absolute inset-0 opacity-30">
@@ -96,7 +95,7 @@ export function EnhancedHero() {
                 </motion.span>
                 Hi, I'm
               </span>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold">
+              <h1 className="text-2xl lg:text-4xl font-bold">
                 <span className="gradient-text">MAZIMPAKA Aime Claudien</span>
               </h1>
             </motion.div>
@@ -128,7 +127,7 @@ export function EnhancedHero() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-2xl md:text-4xl font-bold mb-6"
+                className="text-2xl md:text-2xl font-bold mb-6"
               >
                 Building ideas that{' '}
                 <motion.span
@@ -313,7 +312,7 @@ export function EnhancedHero() {
           </motion.button>
         </motion.div>
       </div>
-    </motion.section>
+    </div>
   )
 }
 
