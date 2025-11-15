@@ -1,0 +1,47 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aimecol",
+  "url": "https://aimecol.com",
+  "image": "https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg",
+  "description": "Full-stack developer and designer creating high-performance digital experiences with React, Next.js, and modern technologies.",
+  "jobTitle": "Full-Stack Developer & Designer",
+  "sameAs": [
+    "https://twitter.com/aimecol",
+    "https://github.com/aimecol",
+    "https://linkedin.com/in/aimecol"
+  ],
+  "knowsAbout": [
+    "Full-Stack Web Development",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Web Design",
+    "UI/UX Design",
+    "Mobile App Development",
+    "Design Systems",
+    "Machine Learning",
+    "Fraud Detection Systems",
+    "Flutter",
+    "Python",
+    "JavaScript"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "url": "https://aimecol.com/contact",
+    "email": "contact@aimecol.com"
+  },
+  "award": [
+    "Building VendorFlow: Fraud Detection System",
+    "Flutter Mobile Innovation",
+    "Next.js Performance Optimization"
+  ],
+  "workLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "East Africa"
+    }
+  }
+}

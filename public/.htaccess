@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Remove trailing slashes (optional - adjust based on your preference)
+  # RewriteCond %{REQUEST_FILENAME} !-d
+  # RewriteRule ^(.+)/$ /$1 [L,R=301]
+  
+  # Rewrite missing files and directories to 404.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ 404.html [QSA,L]
+</IfModule>
