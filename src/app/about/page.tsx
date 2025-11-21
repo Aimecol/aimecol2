@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Download, MapPin, Coffee, Music, Code, Heart } from 'lucide-react'
 import Image from 'next/image'
 import type { Metadata } from 'next'
+import Particles from '@/components/ui/Particles'
 
 const skills = [
   { name: 'React/Next.js', level: 95 },
@@ -198,7 +199,7 @@ export default function AboutPage() {
               >
                 <div className="w-full h-full bg-gradient-to-br from-primary to-accent rounded-2xl text-white text-6xl font-bold shadow-2xl relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
-                  <Image src="https://images.aimecol.com/uploads/large/emy-62002_6917250c0aecb_large.jpg" alt="Aime Claudien" fill className="object-cover object-top" />
+                  <Image src="https://images.aimecol.com/uploads/large/emy-62002_691c4646ba4bb_large.jpg" alt="Aime Claudien" fill className="object-cover object-top" />
                 </div>
               </motion.div>
               
@@ -281,23 +282,26 @@ export default function AboutPage() {
           transition={{ duration: 0.6 }}
           className="mb-24"
         >
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
+          <div className="text-center mb-12 md:mb-16 px-4">
+            <span className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-xs md:text-sm font-medium mb-4">
               Timeline of Growth
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6">
               My <span className="gradient-text">Journey</span>
             </h2>
-            <p className="text-xl text-foreground-secondary max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-foreground-secondary max-w-3xl mx-auto">
               From curious student to passionate professional - here's how my development journey unfolded.
             </p>
           </div>
 
-          <div className="relative max-w-4xl mx-auto">
-            {/* Animated Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-accent to-primary rounded-full"></div>
+          <div className="relative w-full px-4 md:px-0">
+            {/* Desktop Timeline Line (hidden on mobile) */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-accent to-primary rounded-full"></div>
             
-            <div className="space-y-16">
+            {/* Mobile Timeline Line (visible on mobile only) */}
+            <div className="md:hidden absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-accent to-primary rounded-full"></div>
+            
+            <div className="space-y-12 md:space-y-16 max-w-4xl mx-auto">
               {timeline.map((item, index) => (
                 <motion.div
                   key={index}
@@ -305,18 +309,39 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative flex items-center ${
-                    index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                  className={`relative flex items-start md:items-center ${
+                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                   }`}
                 >
                   {/* Content Card */}
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                  <div className={`w-full md:w-5/12 ${
+                    index % 2 === 0 ? 'md:text-right md:pr-8 pl-20 md:pl-0' : 'md:text-left md:pl-8 pl-20'
+                  }`}>
                     <motion.div
                       whileHover={{ scale: 1.02, y: -5 }}
-                      className="bg-surface p-6 rounded-3xl border border-white/10 hover:border-primary/50 transition-all duration-300 shadow-lg"
+                      transition={{ duration: 0.3 }}
+                      className="bg-surface p-4 md:p-6 rounded-2xl md:rounded-3xl border border-white/10 hover:border-primary/50 transition-all duration-300 shadow-lg"
                     >
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className={`w-12 h-12 rounded-xl ${
+                      {/* Mobile: Year badge at top */}
+                      <div className="md:hidden flex items-center gap-3 mb-3">
+                        <div className={`flex-shrink-0 w-10 h-10 rounded-lg ${
+                          item.current 
+                            ? 'bg-gradient-to-r from-primary to-accent' 
+                            : 'bg-primary/10 border border-primary/20'
+                        } flex items-center justify-center text-xs font-bold ${
+                          item.current ? 'text-white' : 'text-primary'
+                        }`}>
+                          {item.year}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-bold text-base">{item.title}</h3>
+                          <p className="text-accent font-medium text-xs">{item.company}</p>
+                        </div>
+                      </div>
+
+                      {/* Desktop: Year with title and company inline */}
+                      <div className="hidden md:flex items-start gap-3 mb-3">
+                        <div className={`flex-shrink-0 w-12 h-12 rounded-xl ${
                           item.current 
                             ? 'bg-gradient-to-r from-primary to-accent' 
                             : 'bg-primary/10 border border-primary/20'
@@ -332,7 +357,7 @@ export default function AboutPage() {
                               <motion.span
                                 animate={{ scale: [1, 1.1, 1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
-                                className="px-2 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
+                                className="px-2 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full whitespace-nowrap"
                               >
                                 Current
                               </motion.span>
@@ -341,19 +366,52 @@ export default function AboutPage() {
                           <p className="text-accent font-medium text-sm">{item.company}</p>
                         </div>
                       </div>
+
+                      {/* Mobile: Current badge */}
+                      {item.current && (
+                        <motion.span
+                          animate={{ scale: [1, 1.1, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="inline-block md:hidden px-2 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full mb-3"
+                        >
+                          Current Role
+                        </motion.span>
+                      )}
+
                       <p className="text-foreground-secondary leading-relaxed text-sm">
                         {item.description}
                       </p>
                     </motion.div>
                   </div>
 
-                  {/* Timeline Dot */}
+                  {/* Timeline Dot - Desktop */}
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                    className={`absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-background z-10 ${
+                    className={`hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-background z-10 ${
+                      item.current 
+                        ? 'bg-gradient-to-r from-primary to-accent' 
+                        : 'bg-primary'
+                    }`}
+                  >
+                    {item.current && (
+                      <motion.div
+                        animate={{ scale: [1, 1.5, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="absolute inset-0 bg-primary/30 rounded-full"
+                      />
+                    )}
+                  </motion.div>
+
+                  {/* Timeline Dot - Mobile */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
+                    className={`md:hidden absolute left-2 top-5 w-5 h-5 rounded-full border-4 border-background z-10 flex-shrink-0 ${
                       item.current 
                         ? 'bg-gradient-to-r from-primary to-accent' 
                         : 'bg-primary'

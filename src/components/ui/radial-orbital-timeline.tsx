@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState, type ElementType, type MouseEvent } from "react";
+import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
 import { ArrowRight, Link, Zap, Calendar, Code, FileText, User, Clock } from "lucide-react";
+// Dynamically import Threads to avoid SSR issues
+const Threads = dynamic(() => import("./Threads"), { ssr: false });
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -255,21 +258,30 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className={`w-full h-screen md:h-[800px] flex flex-col items-center justify-center ${currentTheme.bg} overflow-hidden transition-colors duration-300`}
+      className={`relative w-full h-screen md:h-[800px] flex flex-col items-center justify-center ${currentTheme.bg} overflow-hidden transition-colors duration-300`}
       ref={containerRef}
       onClick={handleContainerClick}
     >
       <div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Project <span className="gradient-text">Timeline</span>
           </h2>
-          <p className="text-xl text-foreground-secondary mb-8">
+          <p className="text-xl text-foreground-secondary">
             Visualizing the journey from concept to launch
           </p>
         </div>
       </div>
-      <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
+      {/* Threads visual section */}
+      <div style={{ width: '100%', height: '1500px', position: 'relative', marginBottom: 32 }}>
+        <Threads
+          amplitude={1}
+          distance={1}
+          enableMouseInteraction={true}
+        />
+      </div>
+      {/* Timeline nodes and cards */}
+      <div className="absolute w-full max-w-4xl h-full flex items-center justify-center">
         <div
           className="absolute w-full h-full flex items-center justify-center"
           ref={orbitRef}

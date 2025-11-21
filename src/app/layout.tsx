@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aimecol.com'),
-  title: "Aimecol - Full-Stack Developer & Designer | React, Next.js, Web Development",
+  title: "Aimecol - Full-Stack Developer & Designer",
   description: "Aimecol is a passionate full-stack developer and designer creating high-performance digital experiences. Specializing in React, Next.js, TypeScript, mobile apps, fraud detection systems, and scalable design systems. Based in East Africa with expertise in web development, UI/UX design, and innovation.",
   keywords: [
     "full-stack developer",

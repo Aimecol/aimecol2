@@ -45,7 +45,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="https://images.aimecol.com/uploads/large/aimecol_691724ff6d23c_large.jpg" alt="Aimecol Logo" width={150} height={50} priority />
+            <Image src="https://images.aimecol.com/uploads/large/aimecol_691c4680253c7_large.jpg" alt="Aimecol Logo" width={150} height={50} priority />
           </Link>
 
           {/* Desktop Navigation */}

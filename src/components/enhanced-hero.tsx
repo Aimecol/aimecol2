@@ -160,20 +160,21 @@ export function EnhancedHero() {
               transition={{ duration: 0.8, delay: 1 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
             >
-              <motion.button
+              <motion.a
+                href='/projects'
                 onClick={scrollToProjects}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1 }}
+                whileTap={{ scale: 0.85 }}
                 className="px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 View My Work
                 <ExternalLink className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
               
               <motion.a
                 href="/contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1 }}
+                whileTap={{ scale: 0.85 }}
                 className="px-8 py-4 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-center"
               >
                 Contact Me
@@ -229,7 +230,7 @@ export function EnhancedHero() {
             >
               {/* Avatar Content */}
               <div className="w-64 h-64 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-6xl font-bold shadow-2xl overflow-hidden">
-                <Image src="https://images.aimecol.com/uploads/large/emy-00892_691725017d5cc_large.jpg" alt="Aime Claudien" fill className="object-cover object-top" />
+                <Image src="https://images.aimecol.com/uploads/large/emy-00892_691c4620cb91d_large.jpg" alt="Aime Claudien" fill className="object-cover object-top" />
               </div>
               
               {/* Orbiting Elements */}

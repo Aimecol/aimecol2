@@ -5,25 +5,15 @@ import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 
 const technologies = [
-  { name: 'React', color: '#61DAFB', size: 'large' as const },
   { name: 'Next.js', color: '#000000', size: 'large' as const },
-  { name: 'TypeScript', color: '#3178C6', size: 'medium' as const },
-  { name: 'Node.js', color: '#339933', size: 'large' as const },
   { name: 'Flutter', color: '#02569B', size: 'medium' as const },
-  { name: 'Figma', color: '#F24E1E', size: 'medium' as const },
-  { name: 'PostgreSQL', color: '#336791', size: 'small' as const },
-  { name: 'Tailwind', color: '#06B6D4', size: 'medium' as const },
   { name: 'Firebase', color: '#FFCA28', size: 'small' as const },
+  { name: 'Node.js', color: '#339933', size: 'large' as const },
+  { name: 'Tailwind', color: '#06B6D4', size: 'medium' as const },
   { name: 'Prisma', color: '#2D3748', size: 'small' as const },
-  { name: 'Vercel', color: '#000000', size: 'small' as const },
-  { name: 'Git', color: '#F05032', size: 'small' as const },
-  { name: 'MySQL', color: '#4479A1', size: 'small' as const },
-  { name: 'GitHub', color: '#181717', size: 'small' as const },
-  { name: 'HTML', color: '#E34F26', size: 'medium' as const },
-  { name: 'CSS', color: '#1572B6', size: 'medium' as const },
-  { name: 'JavaScript', color: '#F7DF1E', size: 'medium' as const },
-  { name: 'PHP', color: '#777BB4', size: 'medium' as const },
-  { name: 'React Native', color: '#61DAFB', size: 'medium' as const }
+  { name: 'MySQL', color: '#4479A1', size: 'large' as const },
+  { name: 'GitHub', color: '#181717', size: 'medium' as const },
+  { name: 'PHP', color: '#F24E1E', size: 'medium' as const }
 ]
 
 const sizeMap = {

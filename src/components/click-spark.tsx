@@ -151,8 +151,9 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
   };
 
   return (
-    <div
+    <div className='z-50'
       style={{
+        zIndex: '10000',
         position: 'relative',
         width: '100%',
         height: '100%'

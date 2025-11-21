@@ -1,8 +1,11 @@
+'use client'
+
 import { EnhancedHeroWithScroll } from '@/components/enhanced-hero'
 import { TechOrbit } from '@/components/tech-orbit'
 import { InnovationShowcase } from '@/components/innovation-showcase'
 import { TestimonialsSection } from '@/components/ui/testimonials-with-marquee'
-import RadialOrbitalTimeline from '@/components/ui/radial-orbital-timeline'
+import { FeaturesSectionWithHoverEffects } from '@/components/ui/feature-section-with-hover-effects'
+import { motion } from 'framer-motion'
 
 const timelineData = [
   {
@@ -75,6 +78,27 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Features Section */}
+      <div className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Why Choose <span className="gradient-text">Me</span>
+            </h2>
+            <p className="text-xl text-foreground-secondary max-w-3xl mx-auto">
+              Comprehensive solutions backed by expertise, innovation, and a commitment to excellence.
+            </p>
+          </motion.div>
+          <FeaturesSectionWithHoverEffects />
+        </div>
+      </div>
       
       {/* Client Testimonials */}
       <TestimonialsSection
@@ -83,9 +107,18 @@ export default function Home() {
         testimonials={[
           {
             author: {
+              name: "Ingabire Nice Sandra",
+              handle: "@honorefrank",
+              avatar: "https://images.aimecol.com/uploads/large/emy-0075_691c64f1f1943_large.jpg"
+            },
+            text: "Aimecol is a very talented and reliable developer. His portfolio shows how much effort he puts into his work, and it’s clear he keeps improving his skills every year. I really like how clean and professional his projects look.",
+            href: "https://instagram.com/honorefrank"
+          },
+          {
+            author: {
               name: "Honore frank",
               handle: "@honorefrank",
-              avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
+              avatar: "https://images.aimecol.com/uploads/large/honore_691c45df9d589_large.jpg"
             },
             text: "Aimecol is a very talented and reliable developer. His portfolio shows how much effort he puts into his work, and it’s clear he keeps improving his skills every year. I really like how clean and professional his projects look.",
             href: "https://instagram.com/honorefrank"
@@ -94,7 +127,7 @@ export default function Home() {
             author: {
               name: "Igiraneza Fabrice",
               handle: "@igifabrice",
-              avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+              avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-14-at-4-04-38-pm_691c45e88974f_large.jpg"
             },
             text: "Working with Aimecol was a game-changer for our startup. The full-stack solution was delivered on time and within budget.",
             href: "https://instagram.com/igifabrice"
@@ -103,7 +136,7 @@ export default function Home() {
             author: {
               name: "Emily Rodriguez",
               handle: "@emilyux",
-              avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face"
+              avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-15-at-5-13-47-pm_691c470c41732_large.jpg"
             },
             text: "The UI/UX design and development skills are top-notch. Our users love the intuitive interface and smooth performance."
           },
@@ -111,7 +144,7 @@ export default function Home() {
             author: {
               name: "David Park",
               handle: "@davidstartup",
-              avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+              avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-14-at-4-23-26-pm_691c45e985bec_large.jpg"
             },
             text: "Aimecol's expertise in React Native helped us launch our cross-platform app successfully. Highly recommended!",
             href: "https://twitter.com/davidstartup"
@@ -120,7 +153,7 @@ export default function Home() {
             author: {
               name: "Lisa Thompson",
               handle: "@lisapm",
-              avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+              avatar: "https://images.aimecol.com/uploads/large/emy-0014_691c624a51216_large.jpg"
             },
             text: "The project management and communication throughout the development process was exceptional. A true professional."
           },
@@ -128,14 +161,28 @@ export default function Home() {
             author: {
               name: "Alex Kumar",
               handle: "@alexcode",
-              avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+              avatar: "https://images.aimecol.com/uploads/large/nib-5897_691c65a51799d_large.jpg"
+            },
+            text: "Innovative solutions and clean code architecture. Aimecol understands modern development practices perfectly."
+          },
+          {
+            author: {
+              name: "Alex Kumar",
+              handle: "@alexcode",
+              avatar: "https://images.aimecol.com/uploads/large/emy-0080_691c62ee24074_large.jpg"
+            },
+            text: "Innovative solutions and clean code architecture. Aimecol understands modern development practices perfectly."
+          },
+          {
+            author: {
+              name: "Alex Kumar",
+              handle: "@alexcode",
+              avatar: "https://images.aimecol.com/uploads/large/emy-5264-2_691c6352c7a47_large.jpg"
             },
             text: "Innovative solutions and clean code architecture. Aimecol understands modern development practices perfectly."
           }
         ]}
       />
-
-      <RadialOrbitalTimeline timelineData={timelineData} />
       <InnovationShowcase />
     </div>
   )

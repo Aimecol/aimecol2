@@ -5,6 +5,8 @@ import { Github, Linkedin, Mail, Heart, ArrowUp, Instagram, X, Facebook, Smile }
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import Particles from './ui/Particles'
+import { ThemeToggle } from './ui/theme-toggle'
 
 const Hyperspeed = dynamic(() => import('./hyperspeed'), { ssr: false })
 
@@ -34,12 +36,27 @@ export function Footer() {
   return (
     <footer className="bg-surface-darker border-t border-white/10 relative overflow-hidden dark:bg-surface-darker dark:border-white/10 light:bg-surface-light light:border-black/10 transition-colors duration-300">
       <Hyperspeed />
+      <div className="absolute inset-0 z-0 opacity-90">
+        <Particles
+          particleCount={500}
+          particleSpread={10}
+          speed={0.06}
+          particleColors={['#D77B35', '#004CFF', '#C85A23']}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.9}
+          alphaParticles={true}
+          particleBaseSize={100}
+          sizeRandomness={0.8}
+          cameraDistance={30}
+          disableRotation={false}
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <Image src="https://images.aimecol.com/uploads/large/aimecol_691724ff6d23c_large.jpg" alt="Logo" width={150} height={50} />
+              <Image src="https://images.aimecol.com/uploads/large/aimecol_691c4680253c7_large.jpg" alt="Logo" width={150} height={50} />
             </Link>
             <p className="text-foreground-secondary mb-6 max-w-md">
               Full-stack developer and designer passionate about creating digital experiences 
@@ -91,6 +108,7 @@ export function Footer() {
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="text-sm text-green-400">Available for projects</span>
               </div>
+              <div className='flex align-center gap-2'>Theme: <ThemeToggle /></div>
             </div>
           </div>
         </div>

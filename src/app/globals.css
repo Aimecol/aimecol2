@@ -142,7 +142,7 @@ body {
 
 /* Marquee animation */
 .animate-marquee {
-  animation: marquee var(--duration, 40s) linear infinite;
+  animation: marquee var(--duration) linear infinite;
 }
 
 .marquee-container:hover .animate-marquee {
