@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { TestimonialCard, TestimonialAuthor } from "@/components/ui/testimonial-card"
+import Particles from "./Particles"
 
 interface TestimonialsSectionProps {
   title: string
@@ -24,7 +25,8 @@ export function TestimonialsSection({
       "py-12 sm:py-24 md:py-32 px-0",
       className
     )}>
-      <div className="mx-auto flex max-w-container flex-col items-center gap-4 text-center sm:gap-16">
+
+      <div className="mx-auto flex max-w-container flex-col items-center gap-4 text-center sm:gap-16 z=10">
         <div className="flex flex-col items-center gap-4 px-4 sm:gap-8">
           <h2 className="max-w-[720px] text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
             {title}
@@ -54,8 +56,8 @@ export function TestimonialsSection({
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/8 bg-gradient-to-r from-background sm:block" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/8 bg-gradient-to-l from-background sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/4 bg-gradient-to-r from-background sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/4 bg-gradient-to-l from-background sm:block" />
         </div>
       </div>
     </section>

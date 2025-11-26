@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Brain, Zap, Shield, BarChart3, MessageCircle, Workflow, ExternalLink, Github } from 'lucide-react'
-import Particles from '@/components/ui/Particles'
+// import Particles from '@/components/ui/Particles'
 
 const innovations = [
   {
@@ -141,24 +141,7 @@ const itemVariants = {
 
 export function InnovationShowcase() {
   return (
-    <section className="py-24 bg-surface relative overflow-hidden">
-      {/* Particles Background */}
-      <div className="absolute inset-0 z-0 h-full opacity-40">
-        <Particles
-          particleCount={500}
-          particleSpread={8}
-          speed={0.05}
-          particleColors={['#D77B35', '#004CFF', '#C85A23']}
-          moveParticlesOnHover={true}
-          particleHoverFactor={0.8}
-          alphaParticles={true}
-          particleBaseSize={150}
-          sizeRandomness={0.6}
-          cameraDistance={25}
-          disableRotation={false}
-        />
-      </div>
-
+    <section className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
@@ -294,22 +277,6 @@ export function InnovationShowcase() {
             <Brain className="w-5 h-5" />
           </motion.a>
         </motion.div>
-      </div>
-
-      <div className="absolute inset-0 z-0 h-full opacity-40">
-        <Particles
-          particleCount={500}
-          particleSpread={10}
-          speed={0.05}
-          particleColors={['#D77B35', '#004CFF', '#C85A23']}
-          moveParticlesOnHover={true}
-          particleHoverFactor={0.9}
-          alphaParticles={true}
-          particleBaseSize={150}
-          sizeRandomness={0.8}
-          cameraDistance={30}
-          disableRotation={false}
-        />
       </div>
     </section>
   )

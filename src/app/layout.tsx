@@ -1,20 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import ClickSpark from "@/components/click-spark";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aimecol.com'),
@@ -44,10 +35,10 @@ export const metadata: Metadata = {
   classification: "Portfolio",
   icons: {
     icon: [
-      { url: "https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg", sizes: "any", type: "image/png" }
+      { url: "https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg", sizes: "any", type: "image/png" }
     ],
-    apple: "https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg",
-    shortcut: "https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg",
+    apple: "https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg",
+    shortcut: "https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg",
   },
   appleWebApp: {
     capable: true,
@@ -67,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "Aimecol Portfolio",
     images: [
       {
-        url: "https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg",
+        url: "https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg",
         width: 1200,
         height: 630,
         alt: "Aimecol Portfolio",
@@ -80,7 +71,7 @@ export const metadata: Metadata = {
     title: "Aimecol - Full-Stack Developer & Designer",
     description: "Creating high-performance digital experiences with React, Next.js, and modern web technologies.",
     creator: "@aimecol",
-    images: ["https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg"],
+    images: ["https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg"],
     site: "@aimecol",
   },
   robots: {
@@ -116,7 +107,7 @@ export default function RootLayout({
     "@type": "Person",
     name: "Aimecol",
     url: "https://aimecol.com",
-    image: "https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg",
+    image: "https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg",
     description: "Full-stack developer and designer creating high-performance digital experiences",
     jobTitle: "Full-Stack Developer & Designer",
     sameAs: [
@@ -150,17 +141,13 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         
-        {/* Preconnect to improve performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
         {/* Favicon links */}
-        <link rel="icon" href="https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg" type="image/png" sizes="any" />
-        <link rel="apple-touch-icon" href="https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg" />
-        <link rel="shortcut icon" href="https://images.aimecol.com/uploads/large/logo_6917250e1bad5_large.jpg" type="image/png" />
+        <link rel="icon" href="https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg" type="image/png" sizes="any" />
+        <link rel="apple-touch-icon" href="https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg" />
+        <link rel="shortcut icon" href="https://images.aimecol.com/uploads/large/logo_691fc631e66f9_large.jpg" type="image/png" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="data-theme"

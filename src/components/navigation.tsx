@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, MessageCircle, X } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -45,7 +45,15 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="https://images.aimecol.com/uploads/large/aimecol_691c4680253c7_large.jpg" alt="Aimecol Logo" width={150} height={50} priority />
+            <Image 
+              src="https://images.aimecol.com/uploads/large/aimecol_691c4680253c7_large.jpg" 
+              alt="Aimecol Logo" 
+              width={150} 
+              height={50} 
+              priority 
+              loading="eager"
+              style={{ width: 'auto', height: 'auto', maxWidth: '150px', maxHeight: '80px' }}
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -75,7 +83,17 @@ export function Navigation() {
 
           {/* Theme Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <ThemeToggle />
+            <motion.a
+              href="https://wa.me/+250789375245?text=Hello%2C%20I%27d%20like%20to%20chat%20with%20you."
+              whileHover={{ scale: 1 }}
+              whileTap={{ scale: 0.5 }}
+              className="px-2 py-1 flex gap-1 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle className="w-5 h-5" /> 
+              Chat
+            </motion.a>
 
             {/* Mobile Menu Button */}
             <button

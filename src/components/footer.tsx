@@ -38,7 +38,7 @@ export function Footer() {
       <Hyperspeed />
       <div className="absolute inset-0 z-0 opacity-90">
         <Particles
-          particleCount={500}
+          particleCount={300}
           particleSpread={10}
           speed={0.06}
           particleColors={['#D77B35', '#004CFF', '#C85A23']}
@@ -56,7 +56,15 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <Image src="https://images.aimecol.com/uploads/large/aimecol_691c4680253c7_large.jpg" alt="Logo" width={150} height={50} />
+              <Image 
+                src="https://images.aimecol.com/uploads/large/aimecol_691c4680253c7_large.jpg" 
+                alt="Logo" 
+                width={150} 
+                height={50} 
+                priority 
+                loading="eager"
+                style={{ width: 'auto', height: 'auto', maxWidth: '150px', maxHeight: '80px' }}
+              />
             </Link>
             <p className="text-foreground-secondary mb-6 max-w-md">
               Full-stack developer and designer passionate about creating digital experiences 

@@ -6,13 +6,12 @@ import { useTheme } from 'next-themes'
 
 const technologies = [
   { name: 'Next.js', color: '#000000', size: 'large' as const },
-  { name: 'Flutter', color: '#02569B', size: 'medium' as const },
-  { name: 'Firebase', color: '#FFCA28', size: 'small' as const },
-  { name: 'Node.js', color: '#339933', size: 'large' as const },
   { name: 'Tailwind', color: '#06B6D4', size: 'medium' as const },
-  { name: 'Prisma', color: '#2D3748', size: 'small' as const },
+  { name: 'Node.js', color: '#339933', size: 'large' as const },
+  { name: 'Prisma', color: '#2D3748', size: 'medium' as const },
   { name: 'MySQL', color: '#4479A1', size: 'large' as const },
   { name: 'GitHub', color: '#181717', size: 'medium' as const },
+  { name: 'Flutter', color: '#02569B', size: 'large' as const },
   { name: 'PHP', color: '#F24E1E', size: 'medium' as const }
 ]
 
@@ -232,7 +231,7 @@ function TechOrb({ tech, index, radius, centerX, centerY }: TechOrbProps) {
       }}
     >
       <span className="text-[8px] sm:text-xs font-bold">
-        {tech.name.slice(0, tech.size === 'small' ? 2 : tech.size === 'medium' ? 3 : 4)}
+        {tech.name.slice(0, tech.size === 'medium' ? 3 : 4)}
       </span>
       
       {/* Tooltip */}
@@ -287,13 +286,13 @@ export function TechOrbit() {
 
   return (
     <div className={`flex items-center justify-center transition-colors duration-300`}>
-        {/* Elegant Shapes Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          {shapeConfigs.map((config, idx) => (
-            <ElegantShape key={idx} config={config} theme={currentTheme} />
-          ))}
-        </div>
-      <div className={`relative transition-colors duration-300 overflow-hidden`} style={{ width: dimensions.width, height: dimensions.height }}>
+      {/* Elegant Shapes Background */}
+      <div className="absolute z-0 inset-0 overflow-hidden">
+        {shapeConfigs.map((config, idx) => (
+          <ElegantShape key={idx} config={config} theme={currentTheme} />
+        ))}
+      </div>
+      <div className={`relative transition-colors duration-300 overflow-hidden z-50`} style={{ width: dimensions.width, height: dimensions.height }}>
 
         {/* Central Avatar/Logo */}
         <motion.div
@@ -365,31 +364,6 @@ export function TechOrbit() {
               radius={radius}
               centerX={centerX}
               centerY={centerY}
-            />
-          ))}
-        </div>
-
-        {/* Floating Particles */}
-        <div className="relative z-10">
-          {isClient && particles.map((particle, i) => (
-            <motion.div
-              key={i}
-              className={`absolute w-2 h-2 ${themeConfig.particleBg} rounded-full transition-colors duration-300`}
-              style={{
-                left: particle.left,
-                top: particle.top,
-              }}
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.3, 1, 0.3],
-                scale: [1, 1.5, 1],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                delay: particle.delay,
-                ease: "easeInOut"
-              }}
             />
           ))}
         </div>

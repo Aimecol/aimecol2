@@ -38,37 +38,14 @@ export function EnhancedHero() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects')
-    element?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <div 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen h-auto flex items-center justify-center"
     >
       {/* Background Paths Layer */}
       <div className="absolute inset-0 opacity-30">
         <BackgroundPaths title="" />
       </div>
-      
-      {/* Animated Background Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-surface/60 to-background/80">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5"></div>
-        <motion.div
-          animate={{
-            background: [
-              'radial-gradient(circle at 20% 50%, rgba(215, 123, 53, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 50%, rgba(0, 76, 255, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 20%, rgba(215, 123, 53, 0.1) 0%, transparent 50%)',
-              'radial-gradient(circle at 20% 50%, rgba(215, 123, 53, 0.1) 0%, transparent 50%)'
-            ]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0"
-        />
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Content */}
@@ -158,26 +135,16 @@ export function EnhancedHero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
+              className="hidden md:flex flex-col sm:flex-row gap-4 justify-center align-center w-full lg:justify-start mb-12"
             >
               <motion.a
                 href='/projects'
-                onClick={scrollToProjects}
                 whileHover={{ scale: 1 }}
                 whileTap={{ scale: 0.85 }}
-                className="px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center justify-center gap-2"
+                className="px-4 py-3 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 View My Work
                 <ExternalLink className="w-5 h-5" />
-              </motion.a>
-              
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1 }}
-                whileTap={{ scale: 0.85 }}
-                className="px-8 py-4 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300 text-center"
-              >
-                Contact Me
               </motion.a>
             </motion.div>
 
@@ -186,7 +153,7 @@ export function EnhancedHero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="flex justify-center lg:justify-start gap-6"
+              className="hidden md:flex justify-center lg:justify-start gap-6"
             >
               {[
                 { icon: Github, href: 'https://github.com/aimecol', label: 'GitHub' },
@@ -300,10 +267,9 @@ export function EnhancedHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center"
+          className="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center"
         >
           <motion.button
-            onClick={scrollToProjects}
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="flex flex-col items-center gap-2 text-foreground-secondary hover:text-primary transition-colors duration-300"
@@ -325,12 +291,7 @@ export function EnhancedHeroWithScroll() {
       <EnhancedHero />
       
       {/* Container Scroll Animation Section */}
-      <div className="relative">
-        {/* Background continuation */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-surface to-background">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5"></div>
-        </div>
-        
+      <div className="relative hero-scrollable">        
         <ContainerScroll
           titleComponent={
             <>
@@ -356,7 +317,7 @@ export function EnhancedHeroWithScroll() {
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
-                <div className="text-sm text-foreground-secondary">aimecol.dev</div>
+                <div className="text-sm text-foreground-secondary">aimecol.com</div>
               </div>
               
               {/* Content Preview */}

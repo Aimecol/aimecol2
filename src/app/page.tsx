@@ -6,6 +6,12 @@ import { InnovationShowcase } from '@/components/innovation-showcase'
 import { TestimonialsSection } from '@/components/ui/testimonials-with-marquee'
 import { FeaturesSectionWithHoverEffects } from '@/components/ui/feature-section-with-hover-effects'
 import { motion } from 'framer-motion'
+import Particles from '@/components/ui/Particles'
+import { BackgroundPaths } from '@/components/ui/background-paths'
+import { lazy, Suspense } from 'react'
+
+// Lazy load heavy components
+const LazyInnovationShowcase = lazy(() => import('@/components/innovation-showcase').then(mod => ({ default: mod.InnovationShowcase })))
 
 const timelineData = [
   {
@@ -63,127 +69,183 @@ const timelineData = [
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <EnhancedHeroWithScroll />
-
-      <div className="bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Tech <span className="gradient-text">Stack</span>
-            </h2>
-            <p className="text-xl text-foreground-secondary mb-8">
-              Technologies I work with to bring ideas to life
-            </p>
-            <TechOrbit />
-          </div>
-        </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-surface to-background">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5"></div>
       </div>
 
-      {/* Features Section */}
-      <div className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Why Choose <span className="gradient-text">Me</span>
-            </h2>
-            <p className="text-xl text-foreground-secondary max-w-3xl mx-auto">
-              Comprehensive solutions backed by expertise, innovation, and a commitment to excellence.
-            </p>
-          </motion.div>
-          <FeaturesSectionWithHoverEffects />
-        </div>
+      <div className="absolute inset-0 z-0 h-full opacity-40">
+        <Particles
+          particleCount={800}
+          particleSpread={10}
+          speed={0.05}
+          particleColors={['#D77B35', '#004CFF', '#C85A23']}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.9}
+          alphaParticles={true}
+          particleBaseSize={500}
+          sizeRandomness={0.8}
+          cameraDistance={25}
+          disableRotation={false}
+        />
       </div>
       
-      {/* Client Testimonials */}
-      <TestimonialsSection
-        title="Trusted by clients worldwide"
-        description="Join the growing number of satisfied clients who have transformed their ideas into successful digital products"
-        testimonials={[
-          {
-            author: {
-              name: "Ingabire Nice Sandra",
-              handle: "@honorefrank",
-              avatar: "https://images.aimecol.com/uploads/large/emy-0075_691c64f1f1943_large.jpg"
-            },
-            text: "Aimecol is a very talented and reliable developer. His portfolio shows how much effort he puts into his work, and it’s clear he keeps improving his skills every year. I really like how clean and professional his projects look.",
-            href: "https://instagram.com/honorefrank"
-          },
-          {
-            author: {
-              name: "Honore frank",
-              handle: "@honorefrank",
-              avatar: "https://images.aimecol.com/uploads/large/honore_691c45df9d589_large.jpg"
-            },
-            text: "Aimecol is a very talented and reliable developer. His portfolio shows how much effort he puts into his work, and it’s clear he keeps improving his skills every year. I really like how clean and professional his projects look.",
-            href: "https://instagram.com/honorefrank"
-          },
-          {
-            author: {
-              name: "Igiraneza Fabrice",
-              handle: "@igifabrice",
-              avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-14-at-4-04-38-pm_691c45e88974f_large.jpg"
-            },
-            text: "Working with Aimecol was a game-changer for our startup. The full-stack solution was delivered on time and within budget.",
-            href: "https://instagram.com/igifabrice"
-          },
-          {
-            author: {
-              name: "Emily Rodriguez",
-              handle: "@emilyux",
-              avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-15-at-5-13-47-pm_691c470c41732_large.jpg"
-            },
-            text: "The UI/UX design and development skills are top-notch. Our users love the intuitive interface and smooth performance."
-          },
-          {
-            author: {
-              name: "David Park",
-              handle: "@davidstartup",
-              avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-14-at-4-23-26-pm_691c45e985bec_large.jpg"
-            },
-            text: "Aimecol's expertise in React Native helped us launch our cross-platform app successfully. Highly recommended!",
-            href: "https://twitter.com/davidstartup"
-          },
-          {
-            author: {
-              name: "Lisa Thompson",
-              handle: "@lisapm",
-              avatar: "https://images.aimecol.com/uploads/large/emy-0014_691c624a51216_large.jpg"
-            },
-            text: "The project management and communication throughout the development process was exceptional. A true professional."
-          },
-          {
-            author: {
-              name: "Alex Kumar",
-              handle: "@alexcode",
-              avatar: "https://images.aimecol.com/uploads/large/nib-5897_691c65a51799d_large.jpg"
-            },
-            text: "Innovative solutions and clean code architecture. Aimecol understands modern development practices perfectly."
-          },
-          {
-            author: {
-              name: "Alex Kumar",
-              handle: "@alexcode",
-              avatar: "https://images.aimecol.com/uploads/large/emy-0080_691c62ee24074_large.jpg"
-            },
-            text: "Innovative solutions and clean code architecture. Aimecol understands modern development practices perfectly."
-          },
-          {
-            author: {
-              name: "Alex Kumar",
-              handle: "@alexcode",
-              avatar: "https://images.aimecol.com/uploads/large/emy-5264-2_691c6352c7a47_large.jpg"
-            },
-            text: "Innovative solutions and clean code architecture. Aimecol understands modern development practices perfectly."
-          }
-        ]}
-      />
-      <InnovationShowcase />
+      <div className="absolute inset-0 z-0 h-full opacity-40">
+        <Particles
+          particleCount={800}
+          particleSpread={10}
+          speed={0.05}
+          particleColors={['#D77B35', '#004CFF', '#C85A23']}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.9}
+          alphaParticles={true}
+          particleBaseSize={500}
+          sizeRandomness={0.8}
+          cameraDistance={25}
+          disableRotation={false}
+        />
+      </div>
+
+      {/* Main Content */}
+      <main className="relative z-10">
+        {/* Hero Section */}
+        <section aria-label="Hero Section">
+          <EnhancedHeroWithScroll />
+        </section>
+
+        <section aria-labelledby="tech-stack-heading" className="py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center py-2">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Tech <span className="gradient-text">Stack</span>
+              </h2>
+              <p className="text-xl text-foreground-secondary mb-8">
+                Technologies I work with to bring ideas to life
+              </p>
+              <TechOrbit />
+            </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section aria-labelledby="features-heading" className="py-20 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 id="features-heading" className="text-4xl md:text-5xl font-bold mb-6">
+                Why Choose <span className="gradient-text">Me</span>
+              </h2>
+              <p className="text-xl text-foreground-secondary max-w-3xl mx-auto">
+                Comprehensive solutions backed by expertise, innovation, and a commitment to excellence.
+              </p>
+            </motion.div>
+            <FeaturesSectionWithHoverEffects />
+          </div>
+        </section>
+      
+        {/* Client Testimonials */}
+        <section aria-labelledby="testimonials-heading">
+          <TestimonialsSection
+            title="Testimonials"
+            description="Please here what they have to say"
+            testimonials={[
+              {
+                author: {
+                  name: "Ingabire Nice Sandra",
+                  handle: "@ingabirenice",
+                  avatar: "https://images.aimecol.com/uploads/large/emy-0075_691c64f1f1943_large.jpg"
+                },
+                text: "Outstanding work ethic and technical expertise.  Highly recommend for any complex project.",
+                href: "https://instagram.com/ingabirenice"
+              },
+              {
+                author: {
+                  name: "Mwizerwa Honore Frank",
+                  handle: "@honorefrank",
+                  avatar: "https://images.aimecol.com/uploads/large/honore_691c45df9d589_large.jpg"
+                },
+                text: "Aimecol is a very talented and reliable developer. I really like how clean and professional his projects look.",
+                href: "https://instagram.com/honorefrank"
+              },
+              {
+                author: {
+                  name: "Igiraneza Fabrice",
+                  handle: "@igifabrice",
+                  avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-14-at-4-04-38-pm_691c45e88974f_large.jpg"
+                },
+                text: "Working with Aimecol was a game-changer. The full-stack solution was delivered on time and within budget.",
+                href: "https://instagram.com/igifabrice"
+              },
+              {
+                author: {
+                  name: "Naomi",
+                  handle: "@onika",
+                  avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-15-at-5-13-47-pm_691c470c41732_large.jpg"
+                },
+                text: "The UI/UX design and development skills are top-notch. Our users love the intuitive interface and smooth performance.",
+                href: "https://wa.me/+250780077106?text=Hello%2C%20I%27d%20like%20to%20chat%20with%20you."
+              },
+              {
+                author: {
+                  name: "Ishimwe Celie",
+                  handle: "@celia",
+                  avatar: "https://images.aimecol.com/uploads/large/whatsapp-image-2025-11-14-at-4-23-26-pm_691c45e985bec_large.jpg"
+                },
+                text: "Aimecol's expertise in Flutter helped us launch our cross-platform app successfully. Highly recommended!",
+                href: "https://wa.me/+250798447952?text=Hello%2C%20I%27d%20like%20to%20chat%20with%20you."
+              },
+              {
+                author: {
+                  name: "Christian",
+                  handle: "@chris",
+                  avatar: "https://images.aimecol.com/uploads/large/emy-0014_691c624a51216_large.jpg"
+                },
+                text: "The project management and communication throughout the development process was exceptional."
+              },
+              {
+                author: {
+                  name: "Karigirwa Henriette",
+                  handle: "@melanie",
+                  avatar: "https://images.aimecol.com/uploads/large/nib-5897_691c65a51799d_large.jpg"
+                },
+                text: "Innovative solutions and clean code architecture. Aimecol understands modern development practices perfectly."
+              },
+              {
+                author: {
+                  name: "Baraka Mussa",
+                  handle: "@mussa",
+                  avatar: "https://images.aimecol.com/uploads/large/emy-0080_691c62ee24074_large.jpg"
+                },
+                text: "Exceptional collaboration skills and creative problem-solving. The product exceededs expectations in every way.",
+                href: "https://www.instagram.com/b_a_raka?igsh=MzV1YjZ6dGV5M3pt"
+              },
+              {
+                author: {
+                  name: "Ndayishimiye Eugene",
+                  handle: "@eugene",
+                  avatar: "https://images.aimecol.com/uploads/large/emy-5264-2_691c6352c7a47_large.jpg"
+                },
+                text: "Reliable, professional, and incredibly skilled. The perfect partner for turning ambitious ideas into reality."
+              }
+            ]}
+          />
+        </section>
+
+        {/* Innovation Showcase - Lazy loaded */}
+        <section aria-label="Innovation Showcase">
+          <Suspense fallback={
+            <div className="py-20 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary" />
+            </div>
+          }>
+            <LazyInnovationShowcase />
+          </Suspense>
+        </section>
+      </main>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import Particles from '@/components/ui/Particles'
 import { motion } from 'framer-motion'
 import { 
   Globe, 
@@ -198,191 +199,214 @@ const itemVariants = {
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            My <span className="gradient-text">Services</span>
-          </h1>
-          <p className="text-xl text-foreground-secondary max-w-3xl mx-auto">
-            Comprehensive digital solutions tailored to your needs. From web applications 
-            to AI integration, I help bring your ideas to life with modern technology.
-          </p>
-        </motion.div>
+    <div className="min-h-screen py-24">
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-surface to-background">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5"></div>
+      </div>
+      
+      <div className="absolute inset-0 z-0 h-full opacity-40">
+        <Particles
+          particleCount={800}
+          particleSpread={10}
+          speed={0.05}
+          particleColors={['#D77B35', '#004CFF', '#C85A23']}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.9}
+          alphaParticles={true}
+          particleBaseSize={500}
+          sizeRandomness={0.8}
+          cameraDistance={25}
+          disableRotation={false}
+        />
+      </div>
 
-        {/* Services Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24"
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              variants={itemVariants}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group bg-surface rounded-3xl p-8 border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10"
-            >
-              {/* Service Header */}
-              <div className="flex items-start gap-4 mb-6">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${service.color} p-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="w-full h-full text-white" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-primary font-medium mb-2">{service.subtitle}</p>
-                  <p className="text-foreground-secondary text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-
-              {/* Features */}
-              <div className="mb-6">
-                <h4 className="font-bold mb-3">What's Included:</h4>
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm text-foreground-secondary">
-                      <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Technologies */}
-              <div className="mb-6">
-                <h4 className="font-bold mb-3">Technologies:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {service.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-background text-foreground-secondary text-xs rounded-full border border-white/10"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Service Details */}
-              <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
-                <div>
-                  <span className="text-foreground-secondary">Target Clients:</span>
-                  <p className="font-medium">{service.targetClients.join(', ')}</p>
-                </div>
-                <div>
-                  <span className="text-foreground-secondary">Timeline:</span>
-                  <p className="font-medium">{service.timeline}</p>
-                </div>
-              </div>
-
-              {/* Pricing & CTA */}
-              <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                <div>
-                  <span className="text-foreground-secondary text-sm">Starting at</span>
-                  <p className="text-2xl font-bold text-primary">{service.pricing}</p>
-                </div>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 group"
-                >
-                  Get Started
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Process Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-24"
-        >
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              My <span className="gradient-text">Process</span>
-            </h2>
+      {/* Main Content */}
+      <main className="relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              My <span className="gradient-text">Services</span>
+            </h1>
             <p className="text-xl text-foreground-secondary max-w-3xl mx-auto">
-              A proven methodology that ensures successful project delivery from start to finish.
+              Comprehensive digital solutions tailored to your needs. From web applications 
+              to AI integration, I help bring your ideas to life with modern technology.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
+          {/* Services Grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24"
+          >
+            {services.map((service, index) => (
               <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                key={service.id}
+                variants={itemVariants}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                className="group bg-surface rounded-3xl p-8 border border-white/10 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10"
               >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <step.icon className="w-10 h-10 text-white" />
+                {/* Service Header */}
+                <div className="flex items-start gap-4 mb-6">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${service.color} p-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className="w-full h-full text-white" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-surface border-2 border-primary rounded-full flex items-center justify-center">
-                    <span className="text-sm font-bold text-primary">{step.step}</span>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-primary font-medium mb-2">{service.subtitle}</p>
+                    <p className="text-foreground-secondary text-sm leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                <p className="text-foreground-secondary leading-relaxed">
-                  {step.description}
-                </p>
+
+                {/* Features */}
+                <div className="mb-6">
+                  <h4 className="font-bold mb-3">What's Included:</h4>
+                  <ul className="space-y-2">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-sm text-foreground-secondary">
+                        <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Technologies */}
+                <div className="mb-6">
+                  <h4 className="font-bold mb-3">Technologies:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {service.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-background text-foreground-secondary text-xs rounded-full border border-white/10"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Service Details */}
+                <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
+                  <div>
+                    <span className="text-foreground-secondary">Target Clients:</span>
+                    <p className="font-medium">{service.targetClients.join(', ')}</p>
+                  </div>
+                  <div>
+                    <span className="text-foreground-secondary">Timeline:</span>
+                    <p className="font-medium">{service.timeline}</p>
+                  </div>
+                </div>
+
+                {/* Pricing & CTA */}
+                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                  <div>
+                    <span className="text-foreground-secondary text-sm">Starting at</span>
+                    <p className="text-2xl font-bold text-primary">{service.pricing}</p>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 group"
+                  >
+                    Get Started
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center bg-surface p-12 rounded-3xl border border-white/10"
-        >
-          <div className="flex justify-center mb-6">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-            ))}
-          </div>
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
-          <p className="text-xl text-foreground-secondary mb-8 max-w-2xl mx-auto">
-            Let's discuss your ideas and create something amazing together. 
-            I'm here to help bring your vision to life with cutting-edge technology.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
-            >
-              Start a Project
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300"
-            >
-              View My Work
-            </Link>
-          </div>
-        </motion.div>
-      </div>
+          {/* Process Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-24"
+          >
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                My <span className="gradient-text">Process</span>
+              </h2>
+              <p className="text-xl text-foreground-secondary max-w-3xl mx-auto">
+                A proven methodology that ensures successful project delivery from start to finish.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <step.icon className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-surface border-2 border-primary rounded-full flex items-center justify-center">
+                      <span className="text-sm font-bold text-primary">{step.step}</span>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-foreground-secondary leading-relaxed">
+                    {step.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center bg-surface p-12 rounded-3xl border border-white/10"
+          >
+            <div className="flex justify-center mb-6">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+              ))}
+            </div>
+            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
+            <p className="text-xl text-foreground-secondary mb-8 max-w-2xl mx-auto">
+              Let's discuss your ideas and create something amazing together. 
+              I'm here to help bring your vision to life with cutting-edge technology.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+              >
+                Start a Project
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white transition-all duration-300"
+              >
+                View My Work
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </main>
     </div>
   )
 }
